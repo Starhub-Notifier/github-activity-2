@@ -2,7 +2,13 @@
   = "Welcome #{current_user.name}"
   = link_to "Sign Out", "/signout"
 
-  
+  %div{"ng-controller" => "FilesListCtrl"}
+    .div{"when-scrolled" => "loadRepos()"}
+      %h2 Activities
+      %ul
+        %li{"ng-repeat" => "repo in repos"}
+          {{ repo.created_at }} : {{ repo.type }} : {{repo.repo.name}}
+
 - else
   = link_to "Sign in with Github", "/auth/github"
 
